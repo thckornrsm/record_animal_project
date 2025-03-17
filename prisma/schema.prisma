@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  user_id    Int    @id @default(autoincrement()) @map("id")
+  email      String @unique
+  password   String 
+  createdAt  DateTime @default(now())
+  role       String 
+  owner       Owner?        @relation(fields: [ownerId], references: [owner_id])
+  veterinarian Veterinarian? @relation(fields: [vetId], references: [vet_id])
+  ownerId   Int? @unique
+  vetId     Int? @unique
+}
+model Owner {
+  owner_id Int    @id @default(autoincrement()) @map("id")
+  name     String @unique
+  phone    String
+  email    String @unique
+  address  String 
+  gender   String @default("unknown")
+  pets     Pet[]
+  user     User?
+}
+model Pet {
+  pet_id      Int          @id @default(autoincrement()) @map("id")
+  pet_code    String       @unique
+  name        String  
+  species     String
+  breed       String
+  age         Int
+  weight      Float
+  gender      String  @default("unknown")  
+  image       String?
+  ownerId     Int
+  vetId       Int?    
+  owner       Owner        @relation(fields: [ownerId], references: [owner_id], onDelete: Cascade)
+  veterinarian Veterinarian? @relation(fields: [vetId], references: [vet_id])
+  medicalRecords Medical_Record[]
+}
+model Veterinarian {
+  vet_id       Int       @id @default(autoincrement()) @map("id")
+  name         String
+  phone        String
+  speciality   String
+  pets         Pet[]      
+  medicalRecords Medical_Record[]
+  user     User?
+}
+model Medical_Record {
+  record_id    Int    @id @default(autoincrement()) @map("id")
+  petId        Int
+  vetId        Int
+  diagnosis    String
+  treatment    String
+  date         DateTime @default(now())
+  appointmentDate DateTime?  
+  pet          Pet          @relation(fields: [petId], references: [pet_id])
+  veterinarian Veterinarian @relation(fields: [vetId], references: [vet_id])
+}

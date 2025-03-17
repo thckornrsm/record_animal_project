@@ -1,0 +1,9 @@
+me.ts
+Headers
+Key: Authorization
+alue: Bearer ใส่token
+
+login.ts
+Headers:
+Key: Content-Type
+Value: application/json
