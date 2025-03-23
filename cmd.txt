@@ -1,0 +1,21 @@
+@prisma/client: ไลบรารี Prisma สำหรับการเชื่อมต่อกับฐานข้อมูล.
+
+axios: ไลบรารีสำหรับการทำ HTTP requests.
+
+bcryptjs: ไลบรารีสำหรับการเข้ารหัสรหัสผ่าน.
+
+formidable: ไลบรารีสำหรับการจัดการไฟล์ multipart ในการอัปโหลด.
+
+jsonwebtoken: ไลบรารีสำหรับการสร้างและตรวจสอบ JSON Web Tokens (JWT).
+
+jwt-decode: ไลบรารีสำหรับการถอดรหัส JWT.
+
+multer: ไลบรารีสำหรับการอัปโหลดไฟล์ใน Express.js.
+
+next: Next.js framework สำหรับการสร้างแอปพลิเคชันเว็บ.
+
+next-connect: ไลบรารีสำหรับการจัดการการเชื่อมต่อและแฮนด์เลอร์ API ใน Next.js.
+
+react: ไลบรารีสำหรับการสร้าง UI.
+
+react-dom: ไลบรารีสำหรับการทำงานกับ DOM ใน React.
