@@ -328,65 +328,65 @@
   </div>
 )}
 
-        {isViewModalOpen && selectedPet && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
-            <div className="bg-white p-6 rounded-xl w-full max-w-lg shadow-xl">
-              <h2 className="text-2xl font-bold text-center mb-4 text-gray-700">Pet Details</h2>
-              <div className="space-y-4">
-                <div className="flex justify-center">
-                  {selectedPet.image && (
-                    <img 
-                      src={typeof selectedPet.image === 'string' ? selectedPet.image : URL.createObjectURL(selectedPet.image)} 
-                      alt={selectedPet.name} 
-                      className="w-36 h-36 object-cover rounded-full border-4 border-indigo-500"
-                    />
-                  )}
-                </div>
-                <div>
-                  <strong className="text-gray-800">Name: </strong>{selectedPet.name}
-                </div>
-                <div>
-                  <strong className="text-gray-800">Species: </strong>{selectedPet.species}
-                </div>
-                <div>
-                  <strong className="text-gray-800">Breed: </strong>{selectedPet.breed}
-                </div>
-                <div>
-                  <strong className="text-gray-800">Age: </strong>{selectedPet.age} years
-                </div>
-                <div>
-                  <strong className="text-gray-800">Weight: </strong>{selectedPet.weight} kg
-                </div>
-                <div>
-                  <strong className="text-gray-800">Gender: </strong>{selectedPet.gender}
-                </div>
+{isViewModalOpen && selectedPet && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
+    <div className="bg-white p-6 rounded-xl w-full max-w-lg sm:w-11/12 lg:w-96 shadow-xl overflow-y-auto max-h-screen">
+      <h2 className="text-2xl font-bold text-center mb-4 text-gray-700">Pet Details</h2>
+      <div className="space-y-4">
+        <div className="flex justify-center">
+          {selectedPet.image && (
+            <img 
+              src={typeof selectedPet.image === 'string' ? selectedPet.image : URL.createObjectURL(selectedPet.image)} 
+              alt={selectedPet.name} 
+              className="w-36 h-36 object-cover rounded-full border-4 border-indigo-500"
+            />
+          )}
+        </div>
+        <div>
+          <strong className="text-gray-800">Name: </strong>{selectedPet.name}
+        </div>
+        <div>
+          <strong className="text-gray-800">Species: </strong>{selectedPet.species}
+        </div>
+        <div>
+          <strong className="text-gray-800">Breed: </strong>{selectedPet.breed}
+        </div>
+        <div>
+          <strong className="text-gray-800">Age: </strong>{selectedPet.age} years
+        </div>
+        <div>
+          <strong className="text-gray-800">Weight: </strong>{selectedPet.weight} kg
+        </div>
+        <div>
+          <strong className="text-gray-800">Gender: </strong>{selectedPet.gender}
+        </div>
 
-            
-                {selectedPet.medicalRecords && selectedPet.medicalRecords.length > 0 ? (
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-gray-800">Medical Records</h3>
-                    {selectedPet.medicalRecords.map((record) => (
-                      <div key={record.record_id} className="bg-gray-100 p-4 rounded-md">
-                        <div><strong>Diagnosis:</strong> {record.diagnosis}</div>
-                        <div><strong>Treatment:</strong> {record.treatment}</div>
-                        <div><strong>Appointment Date:</strong> {record.appointmentDate}</div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-gray-600">No medical records available.</p>
-                )}
-
-                <button
-                  onClick={closeModal}
-                  className="w-full px-6 py-3 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 mt-4"
-                >
-                  Close
-                </button>
+        {selectedPet.medicalRecords && selectedPet.medicalRecords.length > 0 ? (
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-gray-800">Medical Records</h3>
+            {selectedPet.medicalRecords.map((record) => (
+              <div key={record.record_id} className="bg-gray-100 p-4 rounded-md">
+                <div><strong>Diagnosis:</strong> {record.diagnosis}</div>
+                <div><strong>Treatment:</strong> {record.treatment}</div>
+                <div><strong>Appointment Date:</strong> {record.appointmentDate}</div>
               </div>
-            </div>
+            ))}
           </div>
+        ) : (
+          <p className="text-gray-600">No medical records available.</p>
         )}
+
+        <button
+          onClick={closeModal}
+          className="w-full px-6 py-3 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 mt-4"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
 
     
         {isModalOpen && selectedPet && (
